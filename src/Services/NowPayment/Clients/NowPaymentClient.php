@@ -6,6 +6,7 @@ use AdriCQ\Payment\Services\NowPayment\DTOs\EstimatedPriceDTO;
 use AdriCQ\Payment\Services\NowPayment\DTOs\InvoiceDTO;
 use AdriCQ\Payment\Services\NowPayment\DTOs\MinimumPaymentDTO;
 use AdriCQ\Payment\Services\NowPayment\DTOs\PaymentStatusDTO;
+use AdriCQ\Payment\Services\NowPayment\Helpers\ConfigHelper;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
@@ -18,9 +19,9 @@ final readonly class NowPaymentClient
 
     public function __construct()
     {
-        $this->apiUrl      = config('payment.now_payments.url');
-        $this->secretToken = config('payment.now_payments.secret_token');
-        $this->webhookUrl  = config('payment.now_payments.webhook.url');
+        $this->apiUrl      = ConfigHelper::apiUrl();
+        $this->secretToken = ConfigHelper::apiKey();
+        $this->webhookUrl  = ConfigHelper::webhookUrl();
     }
 
     /**
@@ -65,8 +66,8 @@ final readonly class NowPaymentClient
             'orderId'          => $orderId,
             'orderDescription' => $orderDescription,
             'ipn_callback_url' => $this->webhookUrl,
-            'successUrl'       => config('payment.now_payments.invoice.success_url'),
-            'cancelUrl'        => config('payment.now_payments.invoice.cancel_url'),
+            'successUrl'       => ConfigHelper::successInvoiceUrl(),
+            'cancelUrl'        => ConfigHelper::cancelInvoiceUrl(),
         ]);
 
         return InvoiceDTO::make($response->json());

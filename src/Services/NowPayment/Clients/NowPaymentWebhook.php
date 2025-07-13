@@ -3,17 +3,18 @@
 namespace AdriCQ\Payment\Services\NowPayment\Clients;
 
 use AdriCQ\Payment\Services\NowPayment\DTOs\PaymentStatusDTO;
+use AdriCQ\Payment\Services\NowPayment\Helpers\ConfigHelper;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Log;
 
-final class NowPaymentWebhook extends Controller
+abstract class NowPaymentWebhook extends Controller
 {
     private string $ipn_secret;
 
     public function __construct()
     {
-        $this->ipn_secret = config('payment.now_payment.webhook.token');
+        $this->ipn_secret = ConfigHelper::webhookToken();
     }
 
     public function handle(Request $request): void
@@ -27,7 +28,7 @@ final class NowPaymentWebhook extends Controller
         }
     }
 
-    private function isValid(Request $request): bool
+    public function isValid(Request $request): bool
     {
         $error_msg = 'Unknown error';
         $signature = $request->server('X-NOWPAYMENTS-SIG');
