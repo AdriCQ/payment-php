@@ -8,7 +8,7 @@ use AdriCQ\Payment\Services\NowPayment\Clients\NowPaymentClient;
 use AdriCQ\Payment\Services\NowPayment\DTOs\PaymentStatusDTO;
 use Illuminate\Http\Client\ConnectionException;
 
-final readonly class NowPaymentServices implements PaymentServiceContract
+readonly class NowPaymentService implements PaymentServiceContract
 {
     private NowPaymentClient $client;
 
