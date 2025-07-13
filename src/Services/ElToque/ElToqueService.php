@@ -3,12 +3,12 @@
 namespace AdriCQ\Payment\Services\ElToque;
 
 use AdriCQ\Payment\Services\ElToque\DTOs\CurrencyRateDTO;
+use AdriCQ\Payment\Services\ElToque\Rules\RateServiceRule;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
-use Modules\Finance\Rules\RateServiceRule;
 
 final readonly class ElToqueService
 {

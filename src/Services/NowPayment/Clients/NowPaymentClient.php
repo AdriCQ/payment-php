@@ -21,7 +21,7 @@ final readonly class NowPaymentClient
     {
         $this->apiUrl      = ConfigHelper::apiUrl();
         $this->secretToken = ConfigHelper::apiKey();
-        $this->webhookUrl  = ConfigHelper::webhookUrl();
+        $this->webhookUrl  = ConfigHelper::webhookFullUrl();
     }
 
     /**
@@ -61,13 +61,13 @@ final readonly class NowPaymentClient
     public function invoice(float $amount, string $currency, string $orderId, string $orderDescription): InvoiceDTO
     {
         $response = $this->post('/invoice', [
-            'price_amount'     => $amount,
-            'price_currency'   => $currency,
-            'orderId'          => $orderId,
-            'orderDescription' => $orderDescription,
-            'ipn_callback_url' => $this->webhookUrl,
-            'successUrl'       => ConfigHelper::successInvoiceUrl(),
-            'cancelUrl'        => ConfigHelper::cancelInvoiceUrl(),
+            'price_amount'      => $amount,
+            'price_currency'    => $currency,
+            'order_id'          => $orderId,
+            'order_description' => $orderDescription,
+            'ipn_callback_url'  => $this->webhookUrl,
+            'success_url'       => ConfigHelper::successInvoiceUrl(),
+            'cancel_url'        => ConfigHelper::cancelInvoiceUrl(),
         ]);
 
         return InvoiceDTO::make($response->json());

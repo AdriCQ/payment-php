@@ -11,7 +11,7 @@ final class ConfigHelper
 
     public static function webhookUrl(): string
     {
-        return config('payment.webhook_url');
+        return config('payment.now_payments.webhook.url');
     }
 
     public static function apiUrl(): string

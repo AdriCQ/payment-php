@@ -7,7 +7,7 @@ use AdriCQ\Payment\DTOs\InvoiceDTO as GenericInvoiceDTO;
 /**
  * @ref https://documenter.getpostman.com/view/7907941/2s93JusNJt#f5e4e645-dce2-4b06-b2ca-2a29aaa5e845
  */
-final readonly class InvoiceDTO extends GenericInvoiceDTO
+final class InvoiceDTO extends GenericInvoiceDTO
 {
     public function __construct(
         public string $id,
@@ -67,5 +67,26 @@ final readonly class InvoiceDTO extends GenericInvoiceDTO
             created_at: $data['created_at']               ?? '',
             updated_at: $data['updated_at']               ?? ''
         );
+    }
+
+    /**
+     * Convert the object to its array representation.
+     */
+    public function toArray(): array
+    {
+        return [
+            'id'                => $this->id,
+            'order_id'          => $this->order_id,
+            'order_description' => $this->order_description,
+            'price_amount'      => $this->price_amount,
+            'price_currency'    => $this->price_currency,
+            'pay_currency'      => $this->pay_currency,
+            'ipn_callback_url'  => $this->ipn_callback_url,
+            'invoice_url'       => $this->invoice_url,
+            'success_url'       => $this->success_url,
+            'cancel_url'        => $this->cancel_url,
+            'created_at'        => $this->created_at,
+            'updated_at'        => $this->updated_at,
+        ];
     }
 }

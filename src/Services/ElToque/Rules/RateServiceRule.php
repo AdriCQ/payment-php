@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Finance\Rules;
+namespace AdriCQ\Payment\Services\ElToque\Rules;
 
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
-use Validator;
+use Illuminate\Support\Facades\Validator;
 
 final class RateServiceRule implements ValidationRule
 {

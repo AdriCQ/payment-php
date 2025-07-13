@@ -2,7 +2,7 @@
 
 namespace AdriCQ\Payment\DTOs;
 
-readonly class InvoiceDTO
+class InvoiceDTO
 {
     public function __construct(
         public string $id,

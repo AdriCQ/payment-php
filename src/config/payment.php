@@ -14,7 +14,7 @@ return [
     ],
 
     'now_payments' => [
-        'url'            => env('NOW_PAYMENTS_URL'),
+        'url'            => env('NOW_PAYMENTS_URL', 'https://api.nowpayments.io/v1'),
         'public_token'   => env('NOW_PAYMENTS_PUBLIC_TOKEN'),
         'secret_token'   => env('NOW_PAYMENTS_SECRET_TOKEN'),
         'webhook'        => [

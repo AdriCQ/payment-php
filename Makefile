@@ -12,3 +12,9 @@ format: pint
 pint: ## This will pint
 	@echo 'Pint PHP files...'
 	@exec ./vendor/bin/pint --dirty
+
+.PHONY: test
+test: ## This will pint
+	@echo 'Running tests...'
+	@exec  ./vendor/bin/phpunit
+
