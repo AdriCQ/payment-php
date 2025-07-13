@@ -13,7 +13,6 @@ abstract class TestCase extends BaseTestCase
         parent::setUp();
 
         if (file_exists(__DIR__ . '/../.env')) {
-            echo 'Loading .env' . PHP_EOL;
             $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
             $dotenv->load();
         }

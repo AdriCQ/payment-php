@@ -30,6 +30,8 @@ final class NowPaymentTest extends TestCase
             $this->assertArrayHasKey('id', $invoiceArray);
             $this->assertArrayHasKey('invoice_url', $invoiceArray);
             $this->assertTrue((bool) filter_var($invoiceArray['invoice_url'], FILTER_VALIDATE_URL));
+
+            echo 'Now payment Invoice URL: ' . $invoiceArray['invoice_url'];
         } catch (ConnectionException $e) {
             echo 'Invoice Error: ' . $e->getMessage();
         }

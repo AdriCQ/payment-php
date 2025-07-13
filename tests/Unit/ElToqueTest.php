@@ -14,5 +14,8 @@ final class ElToqueTest extends TestCase
         $this->assertArrayHasKey('CUP', $rates);
         $this->assertArrayHasKey('Zelle', $rates);
         $this->assertArrayHasKey('USD', $rates);
+
+        echo 'El Toque USD: ' . $rates['USD'] . ' CUP' . PHP_EOL;
+        echo 'El Toque Zelle: ' . $rates['Zelle'] . ' CUP' . PHP_EOL;
     }
 }

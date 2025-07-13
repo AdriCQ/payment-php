@@ -64,6 +64,7 @@ final readonly class NowPaymentClient
             'price_amount'      => $amount,
             'price_currency'    => $currency,
             'order_id'          => $orderId,
+            //            'pay_currency' => ConfigHelper::paymentCurrency(),
             'order_description' => $orderDescription,
             'ipn_callback_url'  => $this->webhookUrl,
             'success_url'       => ConfigHelper::successInvoiceUrl(),

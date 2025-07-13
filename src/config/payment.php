@@ -14,6 +14,7 @@ return [
     ],
 
     'now_payments' => [
+        'currency'       => env('NOW_PAYMENTS_CURRENCY', 'usdttrc20'),
         'url'            => env('NOW_PAYMENTS_URL', 'https://api.nowpayments.io/v1'),
         'public_token'   => env('NOW_PAYMENTS_PUBLIC_TOKEN'),
         'secret_token'   => env('NOW_PAYMENTS_SECRET_TOKEN'),

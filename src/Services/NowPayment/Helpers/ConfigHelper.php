@@ -4,6 +4,11 @@ namespace AdriCQ\Payment\Services\NowPayment\Helpers;
 
 final class ConfigHelper
 {
+    public static function paymentCurrency(): string
+    {
+        return config('payment.now_payments.currency');
+    }
+
     public static function webhookFullUrl(): string
     {
         return config('app.url') . self::webhookUrl();
