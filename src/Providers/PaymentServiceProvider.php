@@ -18,7 +18,7 @@ final class PaymentServiceProvider extends ServiceProvider
 
     public function register(): void
     {
-        $this->forceTestEnvs();
+//        $this->forceTestEnvs();
         
         $this->mergeConfigFrom(
             __DIR__ . '/../config/payment.php', 'payment'
