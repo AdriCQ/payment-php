@@ -65,8 +65,8 @@ final readonly class NowPaymentClient
             'orderId'          => $orderId,
             'orderDescription' => $orderDescription,
             'ipn_callback_url' => $this->webhookUrl,
-            'successUrl'       => config('finance.now_payments.invoice.success_url'),
-            'cancelUrl'        => config('finance.now_payments.invoice.cancel_url'),
+            'successUrl'       => config('payment.now_payments.invoice.success_url'),
+            'cancelUrl'        => config('payment.now_payments.invoice.cancel_url'),
         ]);
 
         return InvoiceDTO::make($response->json());
