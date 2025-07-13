@@ -1,6 +1,7 @@
 {
     "name": "adricq/payment",
     "type": "library",
+    "version": "0.1.0",
     "license": "MIT",
     "autoload": {
         "psr-4": {
