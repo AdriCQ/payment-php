@@ -12,12 +12,16 @@ final class PaymentServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->publishes([
-            __DIR__ . '/../config/payment.php' => config_path('payment.php'),
+            __DIR__ . '/config/payment.php' => config_path('payment.php'),
         ]);
     }
 
     public function register(): void
     {
+        $this->mergeConfigFrom(
+            __DIR__ . '/config/payment.php', 'payment'
+        );
+        
         app()->singleton(PaymentServiceContract::class, PaymentService::class);
         app()->singleton(ElToqueService::class, fn () => ElToqueService::make());
     }
