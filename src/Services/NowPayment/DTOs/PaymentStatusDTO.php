@@ -2,6 +2,8 @@
 
 namespace AdriCQ\Payment\Services\NowPayment\DTOs;
 
+use AdriCQ\Payment\Enums\PaymentStatus;
+
 /**
  * @ref https://documenter.getpostman.com/view/7907941/2s93JusNJt#62a6d281-478d-4927-8cd0-f96d677b8de6
  *
@@ -35,7 +37,7 @@ final readonly class PaymentStatusDTO
     public function __construct(
         public int $payment_id,
         public ?int $invoice_id,
-        public string $payment_status,
+        public PaymentStatus $payment_status,
         public string $pay_address,
         public ?string $payin_extra_id,
         public float $price_amount,
@@ -90,7 +92,7 @@ final readonly class PaymentStatusDTO
         return new self(
             payment_id: (int) $data['payment_id'],
             invoice_id: $data['invoice_id']         !== null ? (int) $data['invoice_id'] : null,
-            payment_status: (string) $data['payment_status'],
+            payment_status: PaymentStatus::from((string) $data['payment_status']),
             pay_address: (string) $data['pay_address'],
             payin_extra_id: $data['payin_extra_id'] !== null ? (string) $data['payin_extra_id'] : null,
             price_amount: (float) $data['price_amount'],

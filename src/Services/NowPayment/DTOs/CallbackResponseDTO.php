@@ -78,4 +78,29 @@ final readonly class CallbackResponseDTO
             fee: $data['fee']                             ?? []
         );
     }
+
+    public function toArray(): array
+    {
+        return [
+            'payment_id'            => $this->payment_id,
+            'parent_payment_id'     => $this->parent_payment_id,
+            'invoice_id'            => $this->invoice_id,
+            'payment_status'        => $this->payment_status,
+            'pay_address'           => $this->pay_address,
+            'payin_extra_id'        => $this->payin_extra_id,
+            'price_amount'          => $this->price_amount,
+            'price_currency'        => $this->price_currency,
+            'pay_amount'            => $this->pay_amount,
+            'actually_paid'         => $this->actually_paid,
+            'actually_paid_at_fiat' => $this->actually_paid_at_fiat,
+            'pay_currency'          => $this->pay_currency,
+            'order_id'              => $this->order_id,
+            'order_description'     => $this->order_description,
+            'purchase_id'           => $this->purchase_id,
+            'outcome_amount'        => $this->outcome_amount,
+            'outcome_currency'      => $this->outcome_currency,
+            'payment_extra_ids'     => $this->payment_extra_ids,
+            'fee'                   => $this->fee,
+        ];
+    }
 }

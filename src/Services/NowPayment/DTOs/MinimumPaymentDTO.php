@@ -41,4 +41,14 @@ final readonly class MinimumPaymentDTO
             fiat_equivalent: (float) $data['fiat_equivalent']
         );
     }
+
+    public function toArray(): array
+    {
+        return [
+            'currency_from'   => $this->currency_from,
+            'currency_to'     => $this->currency_to,
+            'min_amount'      => $this->min_amount,
+            'fiat_equivalent' => $this->fiat_equivalent,
+        ];
+    }
 }

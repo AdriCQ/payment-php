@@ -41,4 +41,14 @@ final readonly class EstimatedPriceDTO
             estimated_amount: (float) $data['estimated_amount']
         );
     }
+
+    public function toArray(): array
+    {
+        return [
+            'currency_from'    => $this->currency_from,
+            'amount_from'      => $this->amount_from,
+            'currency_to'      => $this->currency_to,
+            'estimated_amount' => $this->estimated_amount,
+        ];
+    }
 }

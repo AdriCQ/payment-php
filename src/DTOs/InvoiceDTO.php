@@ -23,6 +23,17 @@ class InvoiceDTO
             price_currency: $data['price_currency'],
             invoice_url: $data['invoice_url'],
         );
+    }
 
+    public function toArray(): array
+    {
+        return [
+            'id'                => $this->id,
+            'order_id'          => $this->order_id,
+            'order_description' => $this->order_description,
+            'price_amount'      => $this->price_amount,
+            'price_currency'    => $this->price_currency,
+            'invoice_url'       => $this->invoice_url,
+        ];
     }
 }
