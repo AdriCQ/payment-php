@@ -27,6 +27,8 @@ readonly class NowPaymentService implements PaymentServiceContract
             currency: $metadata->currency,
             orderId: $metadata->payableId,
             orderDescription: $description,
+            confirmationUrl: $metadata->confirmationUrl,
+            cancelUrl: $metadata->cancelUrl
         );
     }
 

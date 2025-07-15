@@ -58,7 +58,7 @@ final readonly class NowPaymentClient
      *
      * @throws ConnectionException
      */
-    public function invoice(float $amount, string $currency, string $orderId, string $orderDescription): InvoiceDTO
+    public function invoice(float $amount, string $currency, string $orderId, string $orderDescription, ?string $confirmationUrl=null, ?string $cancelUrl=null): InvoiceDTO
     {
         $response = $this->post('/invoice', [
             'price_amount'      => $amount,
@@ -67,8 +67,8 @@ final readonly class NowPaymentClient
             //            'pay_currency' => ConfigHelper::paymentCurrency(),
             'order_description' => $orderDescription,
             'ipn_callback_url'  => $this->webhookUrl,
-            'success_url'       => ConfigHelper::successInvoiceUrl(),
-            'cancel_url'        => ConfigHelper::cancelInvoiceUrl(),
+            'success_url'       => $confirmationUrl ?? ConfigHelper::successInvoiceUrl(),
+            'cancel_url'        => $cancelUrl       ?? ConfigHelper::cancelInvoiceUrl(),
         ]);
 
         return InvoiceDTO::make($response->json());
