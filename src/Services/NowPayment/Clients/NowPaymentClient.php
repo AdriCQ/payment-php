@@ -78,7 +78,25 @@ final readonly class NowPaymentClient
             'cancel_url'        => $cancelUrl       ?? ConfigHelper::cancelInvoiceUrl(),
         ]);
 
-        return InvoiceDTO::make($response->json());
+        Log::info('NowPayment Invoice request', [
+            'amount' => $amount,
+            'currency' => $currency,
+            'orderId' => $orderId,
+            'description' => $orderDescription,
+            'ipnCallback' => $this->webhookUrl,
+            'successUrl' => $confirmationUrl,
+            'cancelUrl' => $cancelUrl,
+        ]);
+
+        Log::info('NowPayment Invoice response', [
+            'response' => $response->json(),
+        ]);
+
+        if ($response->ok() && (bool)$response->json('status')) {
+            return InvoiceDTO::make($response->json());
+        }
+
+        throw new ConnectionException($response->body());
     }
 
     /**
