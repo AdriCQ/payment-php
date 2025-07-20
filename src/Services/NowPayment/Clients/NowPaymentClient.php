@@ -79,20 +79,20 @@ final readonly class NowPaymentClient
         ]);
 
         Log::info('NowPayment Invoice request', [
-            'amount' => $amount,
-            'currency' => $currency,
-            'orderId' => $orderId,
+            'amount'      => $amount,
+            'currency'    => $currency,
+            'orderId'     => $orderId,
             'description' => $orderDescription,
             'ipnCallback' => $this->webhookUrl,
-            'successUrl' => $confirmationUrl,
-            'cancelUrl' => $cancelUrl,
+            'successUrl'  => $confirmationUrl,
+            'cancelUrl'   => $cancelUrl,
         ]);
 
         Log::info('NowPayment Invoice response', [
             'response' => $response->json(),
         ]);
 
-        if ($response->ok() && (bool)$response->json('status')) {
+        if ($response->ok() && (bool) $response->json('status')) {
             return InvoiceDTO::make($response->json());
         }
 
