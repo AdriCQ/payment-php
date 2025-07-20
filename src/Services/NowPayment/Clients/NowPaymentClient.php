@@ -92,7 +92,7 @@ final readonly class NowPaymentClient
             'response' => $response->json(),
         ]);
 
-        if ($response->ok() && (bool) $response->json('status')) {
+        if ($response->ok()) {
             return InvoiceDTO::make($response->json());
         }
 
