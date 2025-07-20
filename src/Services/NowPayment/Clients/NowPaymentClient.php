@@ -10,6 +10,7 @@ use AdriCQ\Payment\Services\NowPayment\Helpers\ConfigHelper;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 final readonly class NowPaymentClient
 {
@@ -22,6 +23,12 @@ final readonly class NowPaymentClient
         $this->apiUrl      = ConfigHelper::apiUrl();
         $this->secretToken = ConfigHelper::apiKey();
         $this->webhookUrl  = ConfigHelper::webhookFullUrl();
+
+        Log::info('NowPaymentClient initialized', [
+            'apiUrl'      => $this->apiUrl,
+            'secretToken' => $this->secretToken,
+            'webhookUrl'  => $this->webhookUrl,
+        ]);
     }
 
     /**
