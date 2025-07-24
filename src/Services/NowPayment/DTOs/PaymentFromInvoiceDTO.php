@@ -22,10 +22,10 @@ final readonly class PaymentFromInvoiceDTO
         public string $pay_currency,
         public string $purchase_id,
         public string $order_description,
-        public string $customer_email,
-        public string $payout_address,
-        public ?string $payout_extra_id,
-        public string $payout_currency,
+        public ?string $customer_email = null,
+        public ?string $payout_address = null,
+        public ?string $payout_extra_id = null,
+        public ?string $payout_currency = null,
     ) {}
 
     public static function make(array $data): self
@@ -35,10 +35,10 @@ final readonly class PaymentFromInvoiceDTO
             pay_currency: $data['pay_currency'],
             purchase_id: $data['purchase_id'],
             order_description: $data['order_description'],
-            customer_email: $data['customer_email'],
-            payout_address: $data['payout_address'],
-            payout_extra_id: $data['payout_extra_id'],
-            payout_currency: $data['payout_currency'],
+            customer_email: $data['customer_email']   ?? null,
+            payout_address: $data['payout_address']   ?? null,
+            payout_extra_id: $data['payout_extra_id'] ?? null,
+            payout_currency: $data['payout_currency'] ?? null,
         );
     }
 
