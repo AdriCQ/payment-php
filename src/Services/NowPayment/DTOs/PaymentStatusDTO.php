@@ -5,7 +5,7 @@ namespace AdriCQ\Payment\Services\NowPayment\DTOs;
 use AdriCQ\Payment\Enums\PaymentStatus;
 
 /**
- * @ref https://documenter.getpostman.com/view/7907941/2s93JusNJt#62a6d281-478d-4927-8cd0-f96d677b8de6
+ * @see https://documenter.getpostman.com/view/7907941/2s93JusNJt#62a6d281-478d-4927-8cd0-f96d677b8de6
  *
  * @example {
  *     "payment_id": 6249365965,

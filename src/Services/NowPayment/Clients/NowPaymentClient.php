@@ -5,6 +5,8 @@ namespace AdriCQ\Payment\Services\NowPayment\Clients;
 use AdriCQ\Payment\Services\NowPayment\DTOs\EstimatedPriceDTO;
 use AdriCQ\Payment\Services\NowPayment\DTOs\InvoiceDTO;
 use AdriCQ\Payment\Services\NowPayment\DTOs\MinimumPaymentDTO;
+use AdriCQ\Payment\Services\NowPayment\DTOs\PaymentDTO;
+use AdriCQ\Payment\Services\NowPayment\DTOs\PaymentFromInvoiceDTO;
 use AdriCQ\Payment\Services\NowPayment\DTOs\PaymentStatusDTO;
 use AdriCQ\Payment\Services\NowPayment\Helpers\ConfigHelper;
 use Illuminate\Http\Client\ConnectionException;
@@ -61,7 +63,7 @@ final readonly class NowPaymentClient
     }
 
     /**
-     * @ref https://documenter.getpostman.com/view/7907941/2s93JusNJt#f5e4e645-dce2-4b06-b2ca-2a29aaa5e845
+     * @see https://documenter.getpostman.com/view/7907941/2s93JusNJt#f5e4e645-dce2-4b06-b2ca-2a29aaa5e845
      *
      * @throws ConnectionException
      */
@@ -113,7 +115,7 @@ final readonly class NowPaymentClient
     }
 
     /**
-     * @ref https://documenter.getpostman.com/view/7907941/2s93JusNJt#7bfbe4fb-440f-4e46-966b-2f452a70013c
+     * @see https://documenter.getpostman.com/view/7907941/2s93JusNJt#7bfbe4fb-440f-4e46-966b-2f452a70013c
      *
      * @return string[]
      *
@@ -130,7 +132,7 @@ final readonly class NowPaymentClient
     }
 
     /**
-     * @ref https://documenter.getpostman.com/view/7907941/2s93JusNJt#ce3fe3a3-00cd-4df2-bfba-641fde741da7
+     * @see https://documenter.getpostman.com/view/7907941/2s93JusNJt#ce3fe3a3-00cd-4df2-bfba-641fde741da7
      *
      * @throws ConnectionException
      */
@@ -151,7 +153,7 @@ final readonly class NowPaymentClient
     }
 
     /**
-     * @ref https://documenter.getpostman.com/view/7907941/2s93JusNJt#3c86a16e-94ad-4230-a470-4e833766a4c7
+     * @see https://documenter.getpostman.com/view/7907941/2s93JusNJt#3c86a16e-94ad-4230-a470-4e833766a4c7
      *
      * @throws ConnectionException
      */
@@ -170,7 +172,7 @@ final readonly class NowPaymentClient
     }
 
     /**
-     * @ref https://documenter.getpostman.com/view/7907941/2s93JusNJt#62a6d281-478d-4927-8cd0-f96d677b8de6
+     * @see https://documenter.getpostman.com/view/7907941/2s93JusNJt#62a6d281-478d-4927-8cd0-f96d677b8de6
      *
      * @throws ConnectionException
      */
@@ -181,5 +183,25 @@ final readonly class NowPaymentClient
         );
 
         return PaymentStatusDTO::make($response->json());
+    }
+
+    /**
+     * @ref https://documenter.getpostman.com/view/7907941/2s93JusNJt#a0989056-1313-49bc-becd-e11c7e9337eb
+     *
+     * @throws ConnectionException
+     */
+    public function createPaymentFromInvoice(PaymentFromInvoiceDTO $request): PaymentDTO
+    {
+        $response = $this->post(
+            url: '/invoice-payment',
+            body: $request->toArray(),
+        );
+
+        Log::info('NowPayment createPaymentFromInvoice request', [
+            'request'  => $request->toArray(),
+            'response' => $response->json(),
+        ]);
+
+        return PaymentDTO::make($response->json());
     }
 }
