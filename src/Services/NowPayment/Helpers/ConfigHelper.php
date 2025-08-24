@@ -24,7 +24,7 @@ final class ConfigHelper
         return config('payment.now_payments.url', 'https://api.nowpayments.io');
     }
 
-    public static function apiKey(): ?string
+    public static function apiKey(): string
     {
         return config('payment.now_payments.secret_token', 'secret_token');
     }
@@ -34,12 +34,12 @@ final class ConfigHelper
         return config('payment.now_payments.invoice.success_url', 'http://localhost:8000');
     }
 
-    public static function cancelInvoiceUrl(): ?string
+    public static function cancelInvoiceUrl(): string
     {
         return config('payment.now_payments.invoice.cancel_url', 'http://localhost:8000');
     }
 
-    public static function webhookToken(): ?string
+    public static function webhookToken(): string
     {
         return config('payment.now_payments.webhook.token', 'token');
     }
