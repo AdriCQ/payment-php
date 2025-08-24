@@ -70,14 +70,15 @@ final readonly class NowPaymentClient
     public function invoice(float $amount, string $currency, string $orderId, string $orderDescription, ?string $confirmationUrl=null, ?string $cancelUrl=null): InvoiceDTO
     {
         $response = $this->post('/invoice', [
-            'price_amount'      => $amount,
-            'price_currency'    => $currency,
-            'order_id'          => $orderId,
+            'price_amount'        => $amount,
+            'price_currency'      => $currency,
+            'order_id'            => $orderId,
             //            'pay_currency' => ConfigHelper::paymentCurrency(),
-            'order_description' => $orderDescription,
-            'ipn_callback_url'  => $this->webhookUrl,
-            'success_url'       => $confirmationUrl ?? ConfigHelper::successInvoiceUrl(),
-            'cancel_url'        => $cancelUrl       ?? ConfigHelper::cancelInvoiceUrl(),
+            'is_fee_paid_by_user' => ConfigHelper::feePaidByUser(),
+            'order_description'   => $orderDescription,
+            'ipn_callback_url'    => $this->webhookUrl,
+            'success_url'         => $confirmationUrl ?? ConfigHelper::successInvoiceUrl(),
+            'cancel_url'          => $cancelUrl       ?? ConfigHelper::cancelInvoiceUrl(),
         ]);
 
         Log::info('NowPayment Invoice request', [

@@ -14,15 +14,16 @@ return [
     ],
 
     'now_payments' => [
-        'currency'       => env('NOW_PAYMENTS_CURRENCY', 'usdttrc20'),
-        'url'            => env('NOW_PAYMENTS_URL', 'https://api.nowpayments.io/v1'),
-        'public_token'   => env('NOW_PAYMENTS_PUBLIC_TOKEN'),
-        'secret_token'   => env('NOW_PAYMENTS_SECRET_TOKEN'),
-        'webhook'        => [
+        'currency'         => env('NOW_PAYMENTS_CURRENCY', 'usdttrc20'),
+        'fee_paid_by_user' => env('NOW_PAYMENTS_FEE_PAID_BY_USER', true),
+        'url'              => env('NOW_PAYMENTS_URL', 'https://api.nowpayments.io/v1'),
+        'public_token'     => env('NOW_PAYMENTS_PUBLIC_TOKEN'),
+        'secret_token'     => env('NOW_PAYMENTS_SECRET_TOKEN'),
+        'webhook'          => [
             'url'   => env('NOW_PAYMENTS_WEBHOOK_URL', '/webhook/now-payments'),
             'token' => env('NOW_PAYMENTS_WEBHOOK_TOKEN'),
         ],
-        'invoice'        => [
+        'invoice'          => [
             'success_url' => env('NOW_PAYMENTS_SUCCESS_URL'),
             'cancel_url'  => env('NOW_PAYMENTS_CANCEL_URL'),
         ],

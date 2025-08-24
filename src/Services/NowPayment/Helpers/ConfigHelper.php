@@ -41,6 +41,11 @@ final class ConfigHelper
 
     public static function webhookToken(): string
     {
-        return config('payment.now_payment.webhook.token', 'token');
+        return config('payment.now_payments.webhook.token', 'token');
+    }
+
+    public static function feePaidByUser(): bool
+    {
+        return config('payment.now_payments.fee_paid_by_user', true);
     }
 }
