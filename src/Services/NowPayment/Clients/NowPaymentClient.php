@@ -26,7 +26,7 @@ final readonly class NowPaymentClient
         $this->secretToken = ConfigHelper::apiKey();
         $this->webhookUrl  = ConfigHelper::webhookFullUrl();
 
-        Log::info('NowPaymentClient initialized', [
+        Log::debug('NowPaymentClient initialized', [
             'apiUrl'      => $this->apiUrl,
             'secretToken' => $this->secretToken,
             'webhookUrl'  => $this->webhookUrl,
@@ -81,7 +81,7 @@ final readonly class NowPaymentClient
             'cancel_url'          => $cancelUrl       ?? ConfigHelper::cancelInvoiceUrl(),
         ]);
 
-        Log::info('NowPayment Invoice request', [
+        Log::debug('NowPayment Invoice request', [
             'amount'      => $amount,
             'currency'    => $currency,
             'orderId'     => $orderId,
@@ -91,7 +91,7 @@ final readonly class NowPaymentClient
             'cancelUrl'   => $cancelUrl,
         ]);
 
-        Log::info('NowPayment Invoice response', [
+        Log::debug('NowPayment Invoice response', [
             'response' => $response->json(),
         ]);
 
@@ -198,7 +198,7 @@ final readonly class NowPaymentClient
             body: $request->toArray(),
         );
 
-        Log::info('NowPayment createPaymentFromInvoice request', [
+        Log::debug('NowPayment createPaymentFromInvoice request', [
             'request'  => $request->toArray(),
             'response' => $response->json(),
         ]);
